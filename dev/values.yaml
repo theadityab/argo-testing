@@ -1,0 +1,12 @@
+# values.yaml
+
+name: myapp-argo-application
+namespace: nginx-adi
+project: default
+repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
+path: dev
+destination:
+  server: https://kubernetes.default.svc
+  namespace: myapp
+
+

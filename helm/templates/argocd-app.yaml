@@ -1,0 +1,26 @@
+# templates/argo-application.yaml
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  project: {{ .Values.project }}
+
+  source:
+    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
+    targetRevision: HEAD
+    path: {{ .Values.path }}
+  destination: 
+    server: {{ .Values.destination.server }}
+    namespace: {{ .Values.destination.namespace }}
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: false
+      prune: false
+
