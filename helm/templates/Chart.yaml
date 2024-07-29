@@ -9,12 +9,29 @@ spec:
   project: {{ .Values.project }}
 
   source:
-    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
-    targetRevision: HEAD
+    repoURL: {{ .Values.repoURL }}
+    targetRevision: {{ .Values.targetRevision }}
     path: {{ .Values.path }}
-  destination: 
+    helm:
+      valueFiles:
+      - values.yaml
+      parameters:
+      - name: replicaCount
+        value: "{{ .Values.replicaCount }}"
+      - name: image.tag
+        value: "{{ .Values.image.tag }}"
+  destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.destination.namespace }}
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: false
+      prune: false
+
 
   syncPolicy:
     syncOptions:

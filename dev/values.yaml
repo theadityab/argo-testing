@@ -1,12 +1,18 @@
 # values.yaml
 
 name: myapp-argo-application
-namespace: nginx-adi
+namespace: argocd
 project: default
 repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
+targetRevision: HEAD
 path: dev
 destination:
   server: https://kubernetes.default.svc
   namespace: myapp
-
-
+syncPolicy:
+  createNamespace: true
+  selfHeal: true
+  prune: true
+replicaCount: 2
+image:
+  tag: 1.2
