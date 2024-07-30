@@ -4,20 +4,20 @@ metadata:
   name: myapp-argo-application
   namespace: argocd
 spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/theadityab/argo-testing.git
-    targetRevision: HEAD
-    path: dev
-  destination: 
-    server: https://kubernetes.default.svc
+  destination:
+    name: ''
     namespace: myapp
-
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ''
+    repoURL: 'https://github.com/theadityab/argo-testing.git'
+    targetRevision: '1.23'
+    chart: argo-helm/values.yaml
+  sources: []
+  project: default
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
-
+      - CreateNamespace=true
     automated:
       selfHeal: true
       prune: true
