@@ -17,4 +17,6 @@ spec:
         image: httpd:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
-
+        envFrom:
+        - configMapRef:
+            name: app-config
