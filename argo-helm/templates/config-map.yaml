@@ -5,3 +5,4 @@ metadata:
 data: 
   DB_USER: "testinhg"
   DB_PASSWORD: "aditya"
+  TEST: "1345"
