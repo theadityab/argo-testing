@@ -1,0 +1,4 @@
+replicaCount: 3
+
+image:
+  tag: 2.4

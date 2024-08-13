@@ -5,7 +5,7 @@ source:
   targetRevision: HEAD
   helm:
     valueFiles:
-      - values.yaml
+      - test-values.yaml
 destination:
   server: 'https://kubernetes.default.svc'
   namespace: myapp
