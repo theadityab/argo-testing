@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: httpd:{{ .Values.image.tag }}
+        image: adityab01/sampleapp:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
         envFrom:
