@@ -1,0 +1,4 @@
+environmentPrefix: stage
+replicaCount: 2
+image:
+  tag: 2.4

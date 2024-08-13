@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: {{ .Values.environmentPrefix }}-myapp
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: {{ .Values.environmentPrefix }}-myapp
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: myapp
+        app: {{ .Values.environmentPrefix }}-myapp
     spec:
       containers:
       - name: myapp
@@ -19,4 +19,4 @@ spec:
         - containerPort: 8080
         envFrom:
         - configMapRef:
-            name: app-config
+            name: {{ .Values.environmentPrefix }}-app-config

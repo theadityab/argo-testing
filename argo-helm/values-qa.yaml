@@ -1,0 +1,4 @@
+environmentPrefix: qa
+replicaCount: 2
+image:
+  tag: 2.4
