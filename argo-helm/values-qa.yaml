@@ -1,4 +1,4 @@
 environmentPrefix: qa
 replicaCount: 2
 image:
-  tag: v2
+  tag: v1
