@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: bu-test
-  namespace: myapp
+  namespace: argocd
 spec:
   description: Testing Project for an application 
   sourceRepos:
