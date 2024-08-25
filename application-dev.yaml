@@ -16,6 +16,4 @@ spec:
     repoURL: https://github.com/theadityab/argo-testing.git
     targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: null
