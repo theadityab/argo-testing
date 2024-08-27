@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: demo-helm-common-chart
+  namespace: argocd
+spec:
+  generators:
+  - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/theadityab/argo-testing.git
+          revision: release-1.1
+          directories:
+          - path: configs/*/
+      - list:
+          elements:
+          - targetRevision: main
+            env: dev
+          - targetRevision: release-1.1
+            env: qa
+  template:
+    metadata:
+      namespace: argocd
+      name: "{{path[2]}}-{{path.basename}}-{{parameters.env}}"
+    spec:
+      project: default
+      source:
+        helm:
+          valueFiles:
+          - "configs/{{path[2]}}/{{path.basename}}/values.yaml"
+        path:
+        repoURL: https://github.com/theadityab/argo-testing.git
+        targetRevision: "{{parameters.targetRevision}}"
+      syncPolicy:
+        automated:
+          prune: true
+        syncOptions:
+        - CreateNamespace=true
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
