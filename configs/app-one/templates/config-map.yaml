@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.environmentPrefix }}-app-config
+data:
+  DB_USER: "testinhg"
+  DB_PASSWORD: "aditya"
+  TEST: "1345"

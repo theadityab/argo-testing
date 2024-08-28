@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.environmentPrefix }}-myapp
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.environmentPrefix }}-myapp
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.environmentPrefix }}-myapp
+    spec:
+      containers:
+      - name: myapp
+        image: adityab01/sampleapp:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.environmentPrefix }}-app-config
+      imagePullSecrets:
+      - name: myregistrykey
