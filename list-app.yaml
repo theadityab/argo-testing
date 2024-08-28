@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: color-applicaitonset
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - namespace: dev
+      - namespace: qa
+      - namespace: stage
+  template:
+    metadata:
+      name: '{{namespace}}-core-app'
+    spec:
+      destination:
+        namespace: myapp
+        server: https://kubernetes.default.svc
+      project: bu-test
+      source:
+        helm:
+          valueFiles:
+          - values-{{namespace}}.yaml
+        path: argo-helm
+        repoURL: https://github.com/theadityab/argo-testing.git
+        targetRevision: release-1.1
+      syncPolicy:
+        automated: null
