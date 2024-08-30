@@ -4,7 +4,7 @@ metadata:
   name: bu-test
   namespace: argocd
 spec:
-  description: Testing Project for an application 
+  description: Testing Project for an application
   sourceRepos:
   - '*'
 
