@@ -1,4 +1,4 @@
 environmentPrefix: stage
 replicaCount: 2
 image:
-  tag: v3
+  tag: v1
