@@ -27,3 +27,5 @@ spec:
         targetRevision: release-1.1
       syncPolicy:
         automated: null
+        syncOptions:
+          - CreateNamespace=true
