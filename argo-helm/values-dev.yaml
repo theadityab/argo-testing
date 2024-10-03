@@ -1,4 +1,4 @@
 environmentPrefix: dev
 replicaCount: 3
 image:
-  tag: v2
+  tag: v3
